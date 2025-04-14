@@ -53,18 +53,27 @@ Edit
 # Initialize the directory
 terraform init
 
+<img width="958" alt="5" src="https://github.com/user-attachments/assets/8fdcb14e-bb4d-40d1-8ce1-6e9134a7b88e" />
+
 # Review the resources
 terraform plan
+
+<img width="959" alt="6" src="https://github.com/user-attachments/assets/8a23dc75-27dd-456e-88e3-a5dd77a1eaee" />
 
 # Apply and create infrastructure #
 terraform apply
 Type yes when prompted.
+
+<img width="957" alt="7" src="https://github.com/user-attachments/assets/634f2b00-e89c-4090-adef-16c03198ebc7" />
+
 
 **✅ 7. Destroy Infrastructure (When Done)**
 bash
 Copy
 Edit
 terraform destroy
+
+<img width="959" alt="8" src="https://github.com/user-attachments/assets/fd8e0ead-d051-40b4-8827-295db5a72811" />
 
 **🛠 Project Features**
 Two separate VPCs with distinct CIDR blocks
