@@ -1,0 +1,60 @@
+sudo apt update
+sudo apt install -y gnupg software-properties-common curl
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+sudo apt update
+sudo apt install terraform
+terraform --version
+
+provider "aws" {
+    region = "us-east-1"
+    access_key = "YOUR KEY "                 
+    secret_key = "YOUR KEY"                  
+}
+resource "aws_instance" "server"{
+    ami = "YOUR AMI-ID"           
+    instance_type = "t2.micro"
+    count = 2
+    tags = {
+        Name = "flipkart"
+    }
+}
+
+
+resource "aws_vpc" "myvpc" {
+    cidr_block = "10.0.0.0/22"
+    tags = {
+      Name = "Myvpc"
+    }
+  }
+
+resource "aws_subnet" "public" {
+    vpc_id = aws_vpc.myvpc.id
+    availability_zone = "us-east-1a"
+    cidr_block = "10.0.0.0/23"  
+}
+
+resource "aws_subnet" "private" {
+    vpc_id = aws_vpc.myvpc.id
+    availability_zone = "us-east-1b"
+    cidr_block = "10.0.2.0/23" 
+    map_public_ip_on_launch= true 
+}
+
+resource "aws_internet_gateway" "IGW" {
+   vpc_id = aws_vpc.myvpc.id   
+}
+
+resource "aws_route_table" "pubrt" {
+    vpc_id = aws_vpc.myvpc.id
+    route {
+        cidr_block = "0.0.0.0/0"
+        gateway_id = aws_internet_gateway.IGW.id
+    }
+  
+}
+
+resource "aws_route_table_association" "publicrtassosiation" {
+  subnet_id = aws_subnet.public.id
+  route_table_id = aws_route_table.pubrt.id
+}
