@@ -100,7 +100,38 @@ terraform-multi-vpc/
 
 └── README.md
 
-🔐 Security Tips
+
+**OUTPUT**
+
+Here you can see two images: before and after running terraform apply. In the "after" image, two EC2 instances named "FLIPKART" have been successfully created, and one VPC has also been added. You can clearly observe the changes in the screenshots.
+**1. Before creating instances and vpc**
+
+<img width="951" alt="1" src="https://github.com/user-attachments/assets/74aa08d5-879f-4b4d-8512-22ee7e7fc4a9" />
+
+**2.After creating instances and vpc:**
+
+<img width="952" alt="3" src="https://github.com/user-attachments/assets/a011e327-638d-4680-b597-40356fe9dc21" />
+
+**THIS IS THE BEFORE AND AFTER IMAGES OF VPCS**
+**1.Before**
+
+<img width="955" alt="2" src="https://github.com/user-attachments/assets/6a853bb0-bbcf-4a9d-8d48-ee382c34e403" />
+
+**2.After creating vpcs from here yoy can the difference **
+
+<img width="958" alt="4" src="https://github.com/user-attachments/assets/9f7d918f-dbae-4aaa-bafc-963d3d82e519" />
+
+**🔐 Security Tips**
 
 **Never commit AWS credentials or private keys**
+
+**Gugulothu Jagadish Nayak**
+
+
+
+
+
+
+
+
 
